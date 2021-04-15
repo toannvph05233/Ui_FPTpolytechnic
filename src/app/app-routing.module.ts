@@ -16,6 +16,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminDoctorsComponent } from './admin/admin-doctors/admin-doctors.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import {AuthGuard} from './helper/auth-guard';
+import {Websocket2Component} from './websocket2/websocket2.component';
 
 const routes: Routes = [
   { path: 'index', component: HomeComponent, canActivate:[AuthGuard] },
@@ -23,9 +24,11 @@ const routes: Routes = [
   { path: 'appointments', component: AppointmentsComponent },
   { path: 'review-doctor', component: ReviewComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LoginComponent },
   { path: 'search-doctor', component: SearchDoctorComponent },
   { path: 'booking-doctor', component: BookingDoctorComponent },
   { path: 'doctor-dashboard', component: DoctorDashboardComponent },
+  { path: 'websocket', component: Websocket2Component },
   { path: 'invoices', component: InvoicesComponent },
   { path: 'admin', component: AdminComponent , canActivate:[AuthGuard],
     children : [

@@ -29,6 +29,7 @@ import { AdminPatientComponent } from './admin/admin-patient/admin-patient.compo
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { Websocket2Component } from './websocket2/websocket2.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     AdminSpecialitiesComponent,
     AdminDoctorsComponent,
     AdminPatientComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    Websocket2Component
   ],
   imports: [
     BrowserModule,

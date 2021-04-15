@@ -1,0 +1,128 @@
+<!--<div style="color: blue; text-align: center">-->
+<!--  <h1>{{title}}</h1>-->
+<!--  <h3>{{description}}</h3>-->
+<!--  <button (click)="test()">johntoan982</button>-->
+<!--</div>-->
+
+<!--<div class="container" style="width: 400px; margin-top: 20px;">-->
+
+<!--  <form class="form-inline">-->
+<!--    <div class="form-group">-->
+<!--      <label for="connect">Make Connection:</label>-->
+<!--      <button id="connect" class="btn btn-default" type="button" [disabled]="!disabled" (click)="connect(user.username,userNameFriend,idRomChat,message)">Connect</button>-->
+<!--      <button id="disconnect" class="btn btn-default" type="submit" [disabled]="disabled" (click)="disconnect()">Disconnect</button>-->
+<!--    </div>-->
+<!--  </form>-->
+
+<!--  <form class="form-inline" style="margin-top: 20px;">-->
+<!--    <div class="form-group">-->
+<!--      <label>Message:</label>-->
+<!--      <input type="text" id="message" name="message" class="form-control" [(ngModel)]="message" />-->
+<!--    </div>-->
+<!--    <button id="send" class="btn btn-default" type="button" (click)="sendName()">Send</button>-->
+<!--  </form>-->
+
+<!--  <table id="conversation" class="table table-striped" style="margin-top: 20px;">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th>Greetings</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody *ngFor="let greeting of greetings">-->
+<!--    <tr>-->
+<!--      <td>{{greeting}}</td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--  </table>-->
+<!--</div>-->
+<!-- Users box-->
+<div class="col-2 px-0 float-right" style="margin-top: 30px; margin-left: 300px">
+  <div class="bg-white">
+
+    <div class="bg-gray px-4 py-2 bg-light">
+      <p class="h5 mb-0 py-1">Friend</p>
+    </div>
+
+    <div class="messages-box">
+      <div class="list-group rounded-0" style="height: 400px; overflow: auto">
+        <!--      <div *ngFor="let userFriend of listUserFriend ">-->
+        <div>
+          <button  (click)="showChatModal(1,'toan')" class="list-group-item list-group-item-action active text-white rounded-0">
+            <div class="media">
+              <!--            <img src="{{userFriend.imageUrls}}"-->
+              <!--                                  alt="user" width="50" class="rounded-circle">-->
+              <div class="media-body ml-4">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <!--                <h6 class="mb-0">{{userFriend.username}}</h6>-->
+                  <small class="small font-weight-bold">25 Dec</small>
+                </div>
+                <!--              <p class="font-italic mb-0 text-small">{{userFriend.phoneNumber}}</p>-->
+              </div>
+            </div>
+          </button>
+
+          <!--<modal chat>-->
+          <!--        <div class="modal container-fluid" style="margin-top: 270px; margin-left: 300px" id="modalChat{{userFriend.id}}">-->
+          <div class="modal container-fluid" style="margin-top: 270px; margin-left: 300px" id="modalChat1">
+            <div class="col-6 float-right">
+              <div class="row rounded-lg overflow-hidden shadow">
+                <div class="col-7 px-0">
+                  <div class="px-4 py-5 chat-box bg-white" style="height: 400px; overflow: auto">
+
+                    <div *ngFor="let mess of listMessenger">
+                      <div *ngIf="mess.appUser.id != currentUser.id">
+                        <!-- Sender Message-->
+                        <div class="media w-50 mb-3">
+                          <!--                    <img-->
+                          <!--                    src="{{userFriend.imageUrls}}" alt="user" width="50"-->
+                          <!--                    class="rounded-circle">-->
+                          <div class="media-body ml-3">
+                            <div class="bg-light rounded py-2 px-3 mb-2">
+                              <p class="text-small mb-0 text-muted">{{mess.messenger}}</p>
+                            </div>
+                            <p class="small text-muted">12:00 PM | Aug 13</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div *ngIf="mess.appUser.id == currentUser.id">
+                        <!-- Reciever Message-->
+                        <div class="media w-50 ml-auto mb-3">
+                           <div class="media-body">
+                            <div class="bg-primary rounded py-2 px-3 mb-2">
+                              <p class="text-small mb-0 text-white">{{mess.messenger}}</p>
+                            </div>
+                            <p class="small text-muted">12:00 PM | Aug 13</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Typing area -->
+                  <div class="bg-light">
+                    <div class="input-group">
+                      <input name="message"  type="text" placeholder="Type a message" aria-describedby="button-addon2"
+                             class="form-control rounded-0 border-0 py-4 bg-light" [(ngModel)]="this.message" >
+                      <div class="input-group-append">
+                        <button id="button-addon2" type="submit" (click)="sendName()" class="btn btn-link"><i class="fa fa-paper-plane"></i></button>
+                        <button type="button" (click)="disconnect()" class="btn btn-link" data-dismiss="modal"><i class="fa fa-times-circle"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--<modal chat>-->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  Open modal
+</button>
+
+

@@ -99,6 +99,7 @@
             </li>
           <li *ngIf="userToken != null" class="nav-item">
             <a class="nav-link header-login" routerLink="/login">xin chào {{userToken.username}} </a>
+            <a class="nav-link header-login" (click)="logout()" routerLink="/logout">Logout</a>
           </li>
         </ul>
     </nav>

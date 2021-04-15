@@ -34,9 +34,4 @@ export class AuthenticationService {
         return user;
       }));
   }
-
-  logout(): any {
-    localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
-  }
 }

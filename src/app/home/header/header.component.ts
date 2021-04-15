@@ -15,5 +15,9 @@ export class HeaderComponent implements OnInit {
     this.userToken = JSON.parse(localStorage.getItem('currentUser'));
     console.log(this.userToken);
   }
+    logout(){
+      localStorage.removeItem('currentUser');
+      this.userToken = null;
+  }
 
 }
