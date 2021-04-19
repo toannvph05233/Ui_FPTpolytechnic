@@ -30,6 +30,9 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { Websocket2Component } from './websocket2/websocket2.component';
+import { MyApplicationsComponent } from './admin/my-applications/my-applications.component';
+import { ApplicationsComponent } from './admin/applications/applications.component';
+import { PostsComponent } from './admin/posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,10 @@ import { Websocket2Component } from './websocket2/websocket2.component';
     AdminDoctorsComponent,
     AdminPatientComponent,
     AdminDashboardComponent,
-    Websocket2Component
+    Websocket2Component,
+    MyApplicationsComponent,
+    ApplicationsComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,

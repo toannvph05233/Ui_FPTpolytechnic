@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {UserLogin} from '../../models/userLogin';
 import {HttpClient} from '@angular/common/http';
+
 import {ActivatedRoute, ActivatedRouteSnapshot, Router, RouterStateSnapshot} from '@angular/router';
 import {AuthenticationService} from '../../Services/authentication.service';
 import {FormControl, FormGroup} from '@angular/forms';
@@ -8,7 +8,7 @@ import {UserToken} from '../../models/user-token';
 import {first} from 'rxjs/operators';
 
 declare var $: any;
-declare var Swal: any;
+
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
   // userLogin: UserLogin;
   // userToken: any;
   // username: string;
-  // password: string;
   loginForm: FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl('')
@@ -30,7 +29,7 @@ export class LoginComponent implements OnInit {
   currentUser: UserToken;
   hasRoleAdmin = false;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService) {
+  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private router: Router, private authenticationService: AuthenticationService) {
 
     this.authenticationService.currentUser.subscribe(value => this.currentUser = value);
     if (this.currentUser) {
@@ -49,10 +48,13 @@ export class LoginComponent implements OnInit {
         // this.router.navigate(['/']);
       }
     }
+
+
   }
 
   ngOnInit() {
     this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || '/';
+
   }
 
   login() {
@@ -64,68 +66,53 @@ export class LoginComponent implements OnInit {
         data => {
           localStorage.setItem('ACCESS_TOKEN', data.accessToken);
           const roleList = data.roles;
+
+          this.geoFindMe(data.id,this.http);
+
           console.log('data');
           console.log(data);
           for (const role of roleList) {
             if (role.authority === 'ROLE_ADMIN') {
               this.returnUrl = '/admin';
-            }else {
+            } else {
               this.returnUrl = '/index';
             }
           }
 
           this.router.navigate([this.returnUrl]);
-          // this.router.navigate([this.returnUrl]).finally(() => {
-          // });
-
-
-          // $(function() {
-          //   const Toast = Swal.mixin({
-          //     toast: true,
-          //     position: 'top-end',
-          //     showConfirmButton: false,
-          //     timer: 3000
-          //   });
-          //
-          //   Toast.fire({
-          //     type: 'success',
-          //     title: 'Đăng nhập thành công'
-          //   });
-          // });
-          // },
-          // () => {
-          //   this.loading = false;
-          //   $(function() {
-          //     const Toast = Swal.mixin({
-          //       toast: true,
-          //       position: 'top-end',
-          //       showConfirmButton: false,
-          //       timer: 3000
-          //     });
-          //
-          //     Toast.fire({
-          //       type: 'error',
-          //       title: 'Đăng nhập thất bại'
-          //     });
-          //   });
-          // });
-        })
+        });
   }
 
+  geoFindMe(id,http) {
+    function success(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      console.log(longitude);
+      console.log(latitude);
+      let location = {
+        latitude: latitude,
+        longitude: longitude
+      };
 
-// submitLogin(): void {
-//   // console.log('this.userLogin');
-//   console.log(this.username);
-//   console.log(this.password);
-//   const userLogin = {username: this.username, password: this.password};
-//   console.log('this.userLogin');
-//   console.log(userLogin);
-//   const url = 'http://localhost:8080/login';
-//   this.http.post(url, userLogin).subscribe((resJson) => {
-//     this.userToken = resJson;
-//     console.log('this.listPost');
-//     console.log(resJson);
-//     console.log(this.userToken);
-//
-//   });
+      const url = 'http://localhost:8080/location/updateLocation/' + id;
+      http.post(url, location).subscribe((resJson) => {
+        alert('update Location thành công');
+      }, error => {
+        alert('update Location lỗi');
+      });
+
+    }
+
+    function error() {
+      console.log('lỗi');
+    }
+
+    if (!navigator.geolocation) {
+      console.log('Geolocation is not supported by your browser');
+    } else {
+      navigator.geolocation.getCurrentPosition(success, error);
+    }
+
+  }
+
 }
