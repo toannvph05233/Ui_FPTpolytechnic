@@ -19,6 +19,7 @@ import {Websocket2Component} from './websocket2/websocket2.component';
 import {MyApplicationsComponent} from './admin/my-applications/my-applications.component';
 import {ApplicationsComponent} from './admin/applications/applications.component';
 import {PostsComponent} from './admin/posts/posts.component';
+import {DoctorBookingComponent} from './doctor-booking/doctor-booking.component';
 
 const routes: Routes = [
   {path: 'index', component: HomeComponent, canActivate: [AuthGuard]},
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LoginComponent},
   {path: 'search-doctor', component: SearchDoctorComponent},
+  {path: 'doctor-booking', component: DoctorBookingComponent},
   {path: 'booking-doctor', component: BookingDoctorComponent},
   {path: 'doctor-dashboard', component: DoctorDashboardComponent},
   {path: 'websocket', component: Websocket2Component},

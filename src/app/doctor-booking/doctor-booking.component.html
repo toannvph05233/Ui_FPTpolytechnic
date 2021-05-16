@@ -1,1 +1,107 @@
-<p>doctor-booking works!</p>
+<app-header></app-header>
+<div class="breadcrumb-bar">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-md-12 col-12">
+        <nav aria-label="breadcrumb" class="page-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Booking</li>
+          </ol>
+        </nav>
+        <h2 class="breadcrumb-title">Booking</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-12">
+
+        <div class="card">
+          <div class="card-body">
+            <div class="booking-doc-info" *ngIf="doctor != null">
+              <a href="doctor-profile.html" class="booking-doc-img">
+                <img src="{{doctor.imageUrls}}" alt="User Image">
+              </a>
+              <div class="booking-info">
+                <h4><a href="doctor-profile.html">{{doctor.username}}</a></h4>
+                <div class="rating" *ngIf="doctor.percentFeedback == 4">
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star"></i>
+                  <span class="d-inline-block average-rating">{{doctor.countFeedback}}</span>
+                </div>
+                <div class="rating" *ngIf="doctor.percentFeedback == 5">
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <span class="d-inline-block average-rating">{{doctor.countFeedback}}</span>
+                </div>
+                <div class="rating" *ngIf="doctor.percentFeedback == 3">
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star "></i>
+                  <i class="fas fa-star "></i>
+                  <span class="d-inline-block average-rating">{{doctor.countFeedback}}</span>
+                </div>
+                <div class="rating" *ngIf="doctor.percentFeedback == 2">
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star filled"></i>
+                  <i class="fas fa-star "></i>
+                  <i class="fas fa-star "></i>
+                  <i class="fas fa-star "></i>
+                  <span class="d-inline-block average-rating">{{doctor.countFeedback}}</span>
+                </div>
+                <div class="rating" *ngIf="!doctor.percentFeedback">
+                  <i class="fas fa-star "></i>
+                  <i class="fas fa-star "></i>
+                  <i class="fas fa-star "></i>
+                  <i class="fas fa-star "></i>
+                  <i class="fas fa-star "></i>
+                  <span class="d-inline-block average-rating">{{doctor.countFeedback}}</span>
+                </div>
+                <p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i> Hà Nội</p>
+                <br>
+                <p class="text-muted mb-0"><i class="fas fa-clock fa-lg"></i>  {{booking.timeEntity.time}}</p>
+                <br>
+                <p class="text-muted mb-0"><i class="fas fa-calendar-alt fa-lg"></i>  {{booking.date}} </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="submit-section proceed-btn">
+    <a href="javascript:void(0);" (click)="deleteBook()" class="btn btn-danger submit-btn">Delete Booking</a>
+  </div>
+</div>
+<div class="row d-flex justify-content-center mt-100 mb-100">
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-body text-center">
+        <h4 class="card-title">FeedBack Doctor</h4>
+      </div>
+      <div class="comment-widgets">
+        <!-- Comment Row -->
+        <div *ngFor="let feedback of listFeedback" class="d-flex flex-row comment-row m-t-0">
+          <div class="p-2"><img src="{{feedback.user.imageUrls}}" alt="user" width="50" class="rounded-circle"></div>
+          <div class="comment-text w-100">
+            <h6 class="font-medium">{{feedback.user.username}}</h6> <span class="m-b-15 d-block">{{feedback.content}} </span>
+            <div class="comment-footer"> <span class="text-muted float-right">{{feedback.date}}</span> <button type="button" class="btn btn-cyan btn-sm">Edit</button> <button type="button" class="btn btn-success btn-sm">Publish</button> <button type="button" class="btn btn-danger btn-sm">Delete</button> </div>
+          </div>
+        </div>
+      </div> <!-- Card -->
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

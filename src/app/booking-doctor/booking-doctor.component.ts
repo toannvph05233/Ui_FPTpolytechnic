@@ -91,11 +91,11 @@ export class BookingDoctorComponent implements OnInit {
   getcountFeedback() {
     const url = 'http://localhost:8080/feedback/count/' + this.idDoctorBook;
     this.http.get<number>(url).subscribe((resJson) => {
-      this.userToken.countFeedback = resJson;
+      this.doctor.countFeedback = resJson;
     });
     const url2 = 'http://localhost:8080/feedback/percent/' + this.idDoctorBook;
     this.http.get<number>(url2).subscribe((resJson) => {
-      this.userToken.percentFeedback = resJson;
+      this.doctor.percentFeedback = resJson;
     });
   }
 

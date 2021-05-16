@@ -9,7 +9,7 @@ import {User} from '../models/user';
   styleUrls: ['./search-doctor.component.css']
 })
 export class SearchDoctorComponent implements OnInit {
-  listUser: User[];
+  listDoctor: User[];
 
   constructor(private http: HttpClient) { }
 
@@ -19,9 +19,9 @@ export class SearchDoctorComponent implements OnInit {
   getAllUserDoctor() {
     const url = 'http://localhost:8080/userDoctor';
     this.http.get<User[]>(url).subscribe((resJson) => {
-      this.listUser = resJson.reverse();
+      this.listDoctor = resJson.reverse();
       console.log('this.listPost');
-      console.log(this.listUser);
+      console.log(this.listDoctor);
       this.getcountFeedback();
       // this.listPost.reverse();
     });
@@ -29,18 +29,18 @@ export class SearchDoctorComponent implements OnInit {
   }
 
   getcountFeedback(){
-    for (let i =0;i<this.listUser.length;i++){
-      const url = 'http://localhost:8080/feedback/count/'+this.listUser[i].id;
+    for (let i =0;i<this.listDoctor.length;i++){
+      const url = 'http://localhost:8080/feedback/count/'+this.listDoctor[i].id;
       this.http.get<number>(url).subscribe((resJson) => {
-        this.listUser[i].countFeedback = resJson;
+        this.listDoctor[i].countFeedback = resJson;
       });
-      const url2 = 'http://localhost:8080/feedback/percent/'+this.listUser[i].id;
+      const url2 = 'http://localhost:8080/feedback/percent/'+this.listDoctor[i].id;
       this.http.get<number>(url2).subscribe((resJson) => {
-        this.listUser[i].percentFeedback = resJson;
+        this.listDoctor[i].percentFeedback = resJson;
       });
     }
-    console.log('this.listUser');
-    console.log(this.listUser);
+    console.log('this.listDoctor');
+    console.log(this.listDoctor);
   }
   bookDoctor(id){
     localStorage.setItem("idDoctorBook",id);

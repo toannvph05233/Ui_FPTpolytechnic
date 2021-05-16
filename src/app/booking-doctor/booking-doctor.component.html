@@ -29,45 +29,45 @@
               </a>
               <div class="booking-info">
                 <h4><a href="doctor-profile.html">{{doctor.username}}</a></h4>
-                <div class="rating" *ngIf="userToken.percentFeedback == 4">
+                <div class="rating" *ngIf="doctor.percentFeedback == 4">
                   <i class="fas fa-star filled"></i>
                   <i class="fas fa-star filled"></i>
                   <i class="fas fa-star filled"></i>
                   <i class="fas fa-star filled"></i>
                   <i class="fas fa-star"></i>
-                  <span class="d-inline-block average-rating">{{userToken.countFeedback}}</span>
+                  <span class="d-inline-block average-rating">{{doctor.countFeedback}}</span>
                 </div>
-                <div class="rating" *ngIf="userToken.percentFeedback == 5">
+                <div class="rating" *ngIf="doctor.percentFeedback == 5">
                   <i class="fas fa-star filled"></i>
                   <i class="fas fa-star filled"></i>
                   <i class="fas fa-star filled"></i>
                   <i class="fas fa-star filled"></i>
                   <i class="fas fa-star filled"></i>
-                  <span class="d-inline-block average-rating">{{userToken.countFeedback}}</span>
+                  <span class="d-inline-block average-rating">{{doctor.countFeedback}}</span>
                 </div>
-                <div class="rating" *ngIf="userToken.percentFeedback == 3">
+                <div class="rating" *ngIf="doctor.percentFeedback == 3">
                   <i class="fas fa-star filled"></i>
                   <i class="fas fa-star filled"></i>
                   <i class="fas fa-star filled"></i>
                   <i class="fas fa-star "></i>
                   <i class="fas fa-star "></i>
-                  <span class="d-inline-block average-rating">{{userToken.countFeedback}}</span>
+                  <span class="d-inline-block average-rating">{{doctor.countFeedback}}</span>
                 </div>
-                <div class="rating" *ngIf="userToken.percentFeedback == 2">
+                <div class="rating" *ngIf="doctor.percentFeedback == 2">
                   <i class="fas fa-star filled"></i>
                   <i class="fas fa-star filled"></i>
                   <i class="fas fa-star "></i>
                   <i class="fas fa-star "></i>
                   <i class="fas fa-star "></i>
-                  <span class="d-inline-block average-rating">{{userToken.countFeedback}}</span>
+                  <span class="d-inline-block average-rating">{{doctor.countFeedback}}</span>
                 </div>
-                <div class="rating" *ngIf="!userToken.percentFeedback">
+                <div class="rating" *ngIf="!doctor.percentFeedback">
                   <i class="fas fa-star "></i>
                   <i class="fas fa-star "></i>
                   <i class="fas fa-star "></i>
                   <i class="fas fa-star "></i>
                   <i class="fas fa-star "></i>
-                  <span class="d-inline-block average-rating">{{userToken.countFeedback}}</span>
+                  <span class="d-inline-block average-rating">{{doctor.countFeedback}}</span>
                 </div>
                 <p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i> Newyork, USA</p>
               </div>
