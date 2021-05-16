@@ -33,6 +33,7 @@ import { Websocket2Component } from './websocket2/websocket2.component';
 import { MyApplicationsComponent } from './admin/my-applications/my-applications.component';
 import { ApplicationsComponent } from './admin/applications/applications.component';
 import { PostsComponent } from './admin/posts/posts.component';
+import { DoctorBookingComponent } from './doctor-booking/doctor-booking.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { PostsComponent } from './admin/posts/posts.component';
     Websocket2Component,
     MyApplicationsComponent,
     ApplicationsComponent,
-    PostsComponent
+    PostsComponent,
+    DoctorBookingComponent
   ],
   imports: [
     BrowserModule,

@@ -5,7 +5,7 @@ export interface UserToken {
   id: number;
   username: string;
   accessToken?: string;
-  avatar?: string;
+  imageUrls?: string;
   firstName?: string;
   lastName?: string;
   gender?: string;
@@ -14,4 +14,6 @@ export interface UserToken {
   idLocation?: number;
   enabled?: boolean;
   roles: Role[];
+  countFeedback?:number;
+  percentFeedback?:number;
 }

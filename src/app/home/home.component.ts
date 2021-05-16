@@ -24,8 +24,7 @@ export class HomeComponent implements OnInit {
   message = 'ơ kìa';
   private stompClient = null;
   notification='';
-  myApplys: Apply[];
-  whoApplys: Apply[];
+
 
   contentPost: string;
   statusPost:number;
@@ -39,33 +38,15 @@ export class HomeComponent implements OnInit {
     this.userToken = JSON.parse(localStorage.getItem('currentUser'));
     this.getAllPost();
     this.connect();
-    this.getAllMyApply();
 
   }
   getAllPost() {
-    const url = 'http://localhost:8080/post/allPost';
+    const url = 'http://localhost:8080/post/allPostNotApply/'+this.userToken.id;
     this.http.get<Post[]>(url).subscribe((resJson) => {
-      this.listPost = resJson;
+      this.listPost = resJson.reverse();
       console.log('this.listPost');
       console.log(this.listPost);
       // this.listPost.reverse();
-    });
-  }
-  getAllMyApply() {
-    const url = 'http://localhost:8080/apply/allApplyByUser/'+ this.userToken.id;
-    this.http.get<Apply[]>(url).subscribe((resJson) => {
-      this.myApplys = resJson;
-      console.log('this.myApplys');
-      console.log(this.myApplys);
-    });
-  }
-
-  getAllWhoApplyByPost(id) {
-    const url = 'http://localhost:8080/apply/allApplyByPost/'+ id;
-    this.http.get<Apply[]>(url).subscribe((resJson) => {
-      this.whoApplys = resJson;
-      console.log('this.whoApplys');
-      console.log(this.whoApplys);
     });
   }
 
@@ -82,6 +63,7 @@ export class HomeComponent implements OnInit {
     const url = 'http://localhost:8080/apply/create';
     this.http.post(url,apply).subscribe((resJson) => {
       alert("apply thành công")
+      this.getAllPost();
     });
   }
 
@@ -152,6 +134,7 @@ export class HomeComponent implements OnInit {
     console.log(this.post);
     this.http.post(url, this.post).subscribe((resJson) => {
       alert('create thành công');
+      this.getAllPost();
     }, error => {
       alert('create lỗi');
     });

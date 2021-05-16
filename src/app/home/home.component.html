@@ -14,7 +14,7 @@
       <p><em>We can help you!</em></p>
       <div class="bg-light p-2">
         <div class="d-flex flex-row align-items-start"><img class="rounded-circle"
-                                                            src="{{userToken.avatar}}"
+                                                            src="{{userToken.imageUrls}}"
                                                             width="50">
           <textarea [(ngModel)]="contentPost" class="form-control ml-1 shadow-none textarea"
                     style="height: 70px"></textarea></div>
@@ -66,7 +66,7 @@
 
                   <ul class="nav navbar-nav">
                     <li class="dropdown"><a class="dropdown-toggle" style="color: black" data-toggle="dropdown" href="#"
-                                            (click)="click($event)">{{post.user.username}}<span
+                    >{{post.user.username}}<span
                       class="caret"></span></a>
                       <ul class="dropdown-menu">
                         <li><a href="#">Chat</a></li>
@@ -89,10 +89,14 @@
               <div class="bg-white">
                 <div class="d-flex flex-row fs-12">
                   <div class="like p-2 cursor">
-                    <button type="button" (click)="applyPost(post.id)" class="btn btn-light" data-toggle="modal"><i class="fa fa-handshake-o" aria-hidden="true"></i> Apply</button>
+                    <button type="button" (click)="applyPost(post.id)" class="btn btn-light" data-toggle="modal"><i
+                      class="fa fa-handshake-o" aria-hidden="true"></i> Apply
+                    </button>
                   </div>
                   <div class="like p-2 cursor">
-                    <button type="button" class="btn btn-light" data-toggle="modal"><i class="fa fa-commenting-o"></i> Comment</button>
+                    <button type="button" class="btn btn-light" data-toggle="modal"><i class="fa fa-commenting-o"></i>
+                      Comment
+                    </button>
                   </div>
                   <!--        <div class="like p-2 cursor"><i class="fa fa-share"></i>-->
                   <!--          <button type="button" (click)="showSharePost(post.id)" class="btn btn-light" data-toggle="modal">Share-->
@@ -210,8 +214,8 @@
     <!--      phần chat-->
     <!--      phần chat-->
     <!--      phần chat-->
-    <div id="componentChat">
-      <div class="row chat-window" id="chat_window_1" style="margin-left:1000px;">
+    <div id="componentChat"style="margin-left:980px;">
+      <div class="row chat-window" id="chat_window_1" >
         <!--        <div class="col-xs-12 col-md-12">-->
         <div class="panel panel-default">
           <div class="panel-heading top-bar">
