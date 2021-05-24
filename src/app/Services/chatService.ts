@@ -1,57 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import {User} from '../models/user';
+import {Stomp} from '@stomp/stompjs';
 import {Messenger} from '../models/messenger';
+import {User} from '../models/user';
 import {UserToken} from '../models/user-token';
 import {HttpClient} from '@angular/common/http';
-import {AuthenticationService} from '../Services/authentication.service';
-import {Stomp} from '@stomp/stompjs';
 
-declare var $: any;
-
-@Component({
-  selector: 'app-websocket2',
-  templateUrl: './websocket2.component.html',
-  styleUrls: ['./websocket2.component.css']
-})
-export class Websocket2Component implements OnInit {
-
+export class ChatService {
   idRomChat: number;
-
-  title = 'grokonez';
-  description = 'Angular-WebSocket Demo';
-
   userNameFriend = 'toan2';
   greetings: string[] = [];
-
   disabled = true;
   name: string;
   message = 'ơ kìa';
-  private stompClient = null;
-  listUserFriend: User[];
+  stompClient = null;
   listMessenger: Messenger[];
   currentUser: UserToken;
+  http: HttpClient;
 
-
-
-  constructor(private http: HttpClient,private authenticationService: AuthenticationService) {
-    this.authenticationService.currentUser.subscribe(value => this.currentUser = value);
-  }
-
-
-  // connect() {
-  //   const socket = new WebSocket('ws://localhost:8080/gkz-stomp-endpoint/websocket');
-  //   this.stompClient = Stomp.over(socket);
-  //   const thisSocket = this;
-  //   this.stompClient.connect({}, function (frame) {
-  //     thisSocket.setConnected(true);
-  //     console.log('Connected: -----' );
-  //     console.log('Connected: ' + frame);
-  //
-  //     thisSocket.stompClient.subscribe('/topic/hii', function (hello) {
-  //       thisSocket.showGreeting(JSON.parse(hello.body).greeting);
-  //     });
-  //   });
-  // }
   setConnected(connected: boolean) {
     this.disabled = !connected;
 
@@ -59,19 +23,6 @@ export class Websocket2Component implements OnInit {
       this.greetings = [];
     }
   }
-
-  async showChatModal(id, userNameFriend) {
-    const idRom = await this.connect(userNameFriend);
-    const mess = await this.getAllMessengerByIdRom();
-    $('#modalChat' + id).modal('show');
-
-  };
-
-  // test() {
-  //   console.log(this.userNameFriend);
-  //   this.userNameFriend = 'johntoan982';
-  //   console.log(this.userNameFriend);
-  // }
 
   async connect(userNameFriend) {
     console.log("--------------------");
@@ -162,9 +113,5 @@ export class Websocket2Component implements OnInit {
 
   showGreeting() {
     this.getAllMessengerByIdRom();
-  }
-
-  ngOnInit(): void {
-    // this.getAllFriend();
   }
 }

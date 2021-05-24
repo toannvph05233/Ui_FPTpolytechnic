@@ -30,6 +30,11 @@ export class AuthGuard implements CanActivate {
         // this.router.navigate(['index'], {queryParams: {returnUrl: state.url}});
         return true;
       }
+      if (this.currentUser.roles[0].authority == 'ROLE_DOCTOR' && state.url.includes('index')){
+        console.log("chào ROLE_DOCTOR");
+        // this.router.navigate(['index'], {queryParams: {returnUrl: state.url}});
+        return true;
+      }
       return false;
     } else {
       this.router.navigate(['login'], {queryParams: {returnUrl: state.url}});

@@ -11,6 +11,7 @@ export interface UserToken {
   gender?: string;
   email?: string;
   phoneNumber?: string;
+  avatar?: string;
   idLocation?: number;
   enabled?: boolean;
   roles: Role[];

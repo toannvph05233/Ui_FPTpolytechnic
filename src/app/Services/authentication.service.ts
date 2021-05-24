@@ -34,4 +34,7 @@ export class AuthenticationService {
         return user;
       }));
   }
+  logout(){
+    alert("logout")
+  }
 }

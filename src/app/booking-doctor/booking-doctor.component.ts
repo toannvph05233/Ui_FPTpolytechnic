@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../models/user';
 import {UserToken} from '../models/user-token';
+import {NotificationService} from '../Services/notificationService';
+import {log} from 'util';
 
 @Component({
   selector: 'app-booking-doctor',
@@ -22,7 +24,8 @@ export class BookingDoctorComponent implements OnInit {
   sizeCheckBooking: number;
 
 
-  constructor(private http: HttpClient) {
+
+  constructor(private http: HttpClient,private notificationService: NotificationService) {
     this.userToken = JSON.parse(localStorage.getItem('currentUser'));
     this.idDoctorBook = parseInt(localStorage.getItem('idDoctorBook'));
     this.getDoctor();
@@ -31,13 +34,16 @@ export class BookingDoctorComponent implements OnInit {
     this.today = this.date.getDate();
     this.getFeedback();
     this.getcountFeedback();
+    console.log("this.notificationService")
+    console.log("this.notificationService")
+    console.log(this.notificationService)
   }
 
   ngOnInit(): void {
   }
 
   getAllBookByIdDoctor() {
-    const url = 'http://localhost:8080/book/allByDoctor/' + this.idDoctorBook;
+    const url = 'http://localhost:8080/book/allByDoctorStatusFalse/' + this.idDoctorBook;
     this.http.get<any>(url).subscribe((resJson) => {
       this.listBooking = resJson.reverse();
       console.log('this.listBooking');
@@ -81,6 +87,7 @@ export class BookingDoctorComponent implements OnInit {
         const url = 'http://localhost:8080/book/create';
         this.http.post(url, booking).subscribe((resJson) => {
           alert('create thành công');
+          this.notificationService.sendNotification("booking 1 bác sĩ ")
         }, error => {
           alert('create lỗi');
         });

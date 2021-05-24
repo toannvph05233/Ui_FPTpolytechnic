@@ -34,6 +34,7 @@ import { MyApplicationsComponent } from './admin/my-applications/my-applications
 import { ApplicationsComponent } from './admin/applications/applications.component';
 import { PostsComponent } from './admin/posts/posts.component';
 import { DoctorBookingComponent } from './doctor-booking/doctor-booking.component';
+import {NotificationService} from './Services/notificationService';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,7 @@ import { DoctorBookingComponent } from './doctor-booking/doctor-booking.componen
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
