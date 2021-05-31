@@ -20,12 +20,14 @@ import {MyApplicationsComponent} from './admin/my-applications/my-applications.c
 import {ApplicationsComponent} from './admin/applications/applications.component';
 import {PostsComponent} from './admin/posts/posts.component';
 import {DoctorBookingComponent} from './doctor-booking/doctor-booking.component';
+import {CallvideoComponent} from './callvideo/callvideo.component';
 
 const routes: Routes = [
   {path: 'index', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'my-patients', component: MypatientsComponent},
   {path: 'appointments', component: AppointmentsComponent},
   {path: 'review-doctor', component: ReviewComponent},
+  {path: 'call-video', component: CallvideoComponent},
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LoginComponent},
   {path: 'search-doctor', component: SearchDoctorComponent},

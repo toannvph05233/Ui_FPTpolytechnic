@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyAM57F6gywH4LrAw3DnleZ-JRD829azuPk",
+    authDomain: "callvideo3-f0e65.firebaseapp.com",
+    databaseURL: "https://callvideo3-f0e65-default-rtdb.firebaseio.com",
+    projectId: "callvideo3-f0e65",
+    storageBucket: "callvideo3-f0e65.appspot.com",
+    messagingSenderId: "1035835722203",
+    appId: "1:1035835722203:web:02abe879852c147b447ffe",
+    measurementId: "G-P5Q3N23YHM"
+  }
 };
 
 /*

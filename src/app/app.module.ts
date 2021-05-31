@@ -35,6 +35,10 @@ import { ApplicationsComponent } from './admin/applications/applications.compone
 import { PostsComponent } from './admin/posts/posts.component';
 import { DoctorBookingComponent } from './doctor-booking/doctor-booking.component';
 import {NotificationService} from './Services/notificationService';
+import { CallvideoComponent } from './callvideo/callvideo.component';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -63,7 +67,8 @@ import {NotificationService} from './Services/notificationService';
     MyApplicationsComponent,
     ApplicationsComponent,
     PostsComponent,
-    DoctorBookingComponent
+    DoctorBookingComponent,
+    CallvideoComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +78,8 @@ import {NotificationService} from './Services/notificationService';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [NotificationService],
   bootstrap: [AppComponent]
