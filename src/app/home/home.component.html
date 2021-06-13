@@ -14,8 +14,8 @@
       <p><em>We can help you!</em></p>
       <div class="bg-light p-2">
         <div class="d-flex flex-row align-items-start"><img class="rounded-circle"
-                                                            src="{{userToken.imageUrls}}"
-                                                            width="50">
+                                                            src="{{userToken.avatar}}"
+                                                            width="60" height="65">
           <textarea [(ngModel)]="contentPost" class="form-control ml-1 shadow-none textarea"
                     style="height: 70px"></textarea></div>
         <div class="row">
@@ -32,10 +32,15 @@
 
           </div>
           <div class="col col-4 mt-2 text-right">
-            <div class="form-group">
-              <input type="file" class="form-control">
-            </div>
+          <div class="form-group">
+            <input type="file" #uploadFile (change)="uploadFileImg()" class="form-control">
+          </div>
 
+        </div>
+          <div style="margin-left: 300px" *ngIf="arrayPicture!= ''">
+            <div class="form-group">
+              <img src="{{arrayPicture}}"  width="550" height="300">
+            </div>
           </div>
           <div class="col col-8 mt-2 text-center">
             <img width="400">

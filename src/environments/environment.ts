@@ -4,15 +4,15 @@
 
 export const environment = {
   production: false,
-  firebaseConfig: {
-    apiKey: "AIzaSyAM57F6gywH4LrAw3DnleZ-JRD829azuPk",
-    authDomain: "callvideo3-f0e65.firebaseapp.com",
-    databaseURL: "https://callvideo3-f0e65-default-rtdb.firebaseio.com",
-    projectId: "callvideo3-f0e65",
-    storageBucket: "callvideo3-f0e65.appspot.com",
-    messagingSenderId: "1035835722203",
-    appId: "1:1035835722203:web:02abe879852c147b447ffe",
-    measurementId: "G-P5Q3N23YHM"
+  firebaseConfig : {
+    apiKey: "AIzaSyDtZwgzK8I4u_ixmUjE-O3BmKrzAkE4ID8",
+    authDomain: "upload-file-project-id.firebaseapp.com",
+    databaseURL: "https://upload-file-project-id-default-rtdb.firebaseio.com",
+    projectId: "upload-file-project-id",
+    storageBucket: "upload-file-project-id.appspot.com",
+    messagingSenderId: "328385151105",
+    appId: "1:328385151105:web:adf5dee50ede215524cd80",
+    measurementId: "G-7WCFZVDXZK"
   }
 };
 

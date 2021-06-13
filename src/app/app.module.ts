@@ -39,6 +39,8 @@ import { CallvideoComponent } from './callvideo/callvideo.component';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,7 @@ import {environment} from '../environments/environment';
     PostsComponent,
     DoctorBookingComponent,
     CallvideoComponent
+
   ],
   imports: [
     BrowserModule,
@@ -78,6 +81,7 @@ import {environment} from '../environments/environment';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFireStorageModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],

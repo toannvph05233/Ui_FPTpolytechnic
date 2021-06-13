@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {User} from '../models/user';
 import {UserToken} from '../models/user-token';
 import {Post} from '../models/post';
@@ -8,6 +8,8 @@ import {Stomp} from '@stomp/stompjs';
 import {Messenger} from '../models/messenger';
 import {Apply} from '../models/apply';
 import {NotificationService} from '../Services/notificationService';
+import {AngularFireStorage} from '@angular/fire/storage';
+import {finalize} from 'rxjs/operators';
 
 declare var $: any;
 
@@ -17,15 +19,16 @@ declare var $: any;
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  @ViewChild('uploadFile', { static: true }) public avatarDom: ElementRef | undefined;
   userToken: UserToken;
   post: Post;
   listPost: Post[];
   contentPost: string;
-  statusPost: number;
-  arrayPicture = 'https://ruthamcauquan2.info/wp-content/uploads/2020/07/anh-gai-xinh-hap-dan-nhieu-nam-gioi-16.jpg';
+  statusPost: number = 1;
+  arrayPicture = '';
 
 
-  constructor(private http: HttpClient,
+  constructor(private http: HttpClient,private storage: AngularFireStorage,
               private router: Router, private notificationService: NotificationService) {
   }
 
@@ -75,6 +78,26 @@ export class HomeComponent implements OnInit {
 
   }
 
+  selectedImage: any = null;
+
+
+  submit() {
+    if (this.selectedImage != null) {
+      const filePath=this.selectedImage.name;
+      const fileRef = this.storage.ref(filePath);
+      this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
+        finalize(() => (fileRef.getDownloadURL().subscribe(url => {this.arrayPicture = url})))
+      ).subscribe();
+    }
+  }
+
+  uploadFileImg() {
+    this.selectedImage = this.avatarDom?.nativeElement.files[0];
+    this.submit();
+  }
+
+
+
   savePost() {
     this.post = {
       id: null,
@@ -89,6 +112,7 @@ export class HomeComponent implements OnInit {
     this.http.post(url, this.post).subscribe((resJson) => {
       alert('create thành công');
       this.getAllPost();
+      this.arrayPicture='';
     }, error => {
       alert('create lỗi');
     });
