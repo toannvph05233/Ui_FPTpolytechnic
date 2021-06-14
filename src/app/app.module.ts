@@ -42,6 +42,7 @@ import {environment} from '../environments/environment';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { FillDoctorNearMeComponent } from './fill-doctor-near-me/fill-doctor-near-me.component';
+import { FillNannyNearMeComponent } from './fill-nanny-near-me/fill-nanny-near-me.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { FillDoctorNearMeComponent } from './fill-doctor-near-me/fill-doctor-nea
     PostsComponent,
     DoctorBookingComponent,
     CallvideoComponent,
-    FillDoctorNearMeComponent
+    FillDoctorNearMeComponent,
+    FillNannyNearMeComponent
 
   ],
   imports: [

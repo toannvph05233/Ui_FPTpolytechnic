@@ -22,6 +22,7 @@ import {PostsComponent} from './admin/posts/posts.component';
 import {DoctorBookingComponent} from './doctor-booking/doctor-booking.component';
 import {CallvideoComponent} from './callvideo/callvideo.component';
 import {FillDoctorNearMeComponent} from './fill-doctor-near-me/fill-doctor-near-me.component';
+import {FillNannyNearMeComponent} from './fill-nanny-near-me/fill-nanny-near-me.component';
 
 const routes: Routes = [
   {path: 'index', component: HomeComponent, canActivate: [AuthGuard]},
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path: 'doctor-dashboard', component: DoctorDashboardComponent},
   {path: 'websocket', component: Websocket2Component},
   {path: 'fill-doctor-near-me', component: FillDoctorNearMeComponent},
+  {path: 'fill-nanny-near-me', component: FillNannyNearMeComponent},
   {path: 'invoices', component: InvoicesComponent},
   {
     path: 'admin', component: AdminComponent,
