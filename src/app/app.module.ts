@@ -41,6 +41,7 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { FillDoctorNearMeComponent } from './fill-doctor-near-me/fill-doctor-near-me.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
     ApplicationsComponent,
     PostsComponent,
     DoctorBookingComponent,
-    CallvideoComponent
+    CallvideoComponent,
+    FillDoctorNearMeComponent
 
   ],
   imports: [
