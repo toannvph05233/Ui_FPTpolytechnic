@@ -10,6 +10,7 @@ import {Apply} from '../models/apply';
 import {NotificationService} from '../Services/notificationService';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
+import {ChatService} from "../Services/chatService";
 
 declare var $: any;
 
@@ -29,14 +30,16 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private http: HttpClient,private storage: AngularFireStorage,
-              private router: Router, private notificationService: NotificationService) {
+              private router: Router, private notificationService: NotificationService,public chatSerice: ChatService) {
   }
 
   ngOnInit(): void {
     this.userToken = JSON.parse(localStorage.getItem('currentUser'));
+    this.chatSerice.currentUser = this.userToken;
+    this.chatSerice.http = this.http;
+
     this.getAllPost();
     this.notificationService.connect(this.userToken.idLocation);
-
   }
 
   getAllPost() {
@@ -78,6 +81,9 @@ export class HomeComponent implements OnInit {
 
   }
 
+
+
+
   selectedImage: any = null;
 
 
@@ -118,4 +124,11 @@ export class HomeComponent implements OnInit {
     });
     this.notificationService.sendNotification('đã có tạo 1 bài post mới');
   }
+
+
+
+
+
+
+
 }

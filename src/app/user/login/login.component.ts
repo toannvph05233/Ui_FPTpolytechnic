@@ -9,7 +9,6 @@ import {first} from 'rxjs/operators';
 
 declare var $: any;
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

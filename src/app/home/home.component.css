@@ -89,21 +89,21 @@
   border-bottom-color: rgba(0, 0, 0, 0);
 }
 
-#componentChat .base_sent {
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-#componentChat .base_sent > .avatar:after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  border: 5px solid white;
-  border-right-color: transparent;
-  border-top-color: transparent;
-  box-shadow: 5px 10px;}
+/*#componentChat .base_sent {*/
+/*  justify-content: flex-end;*/
+/*  align-items: flex-end;*/
+/*}*/
+/*#componentChat .base_sent > .avatar:after {*/
+/*  content: "";*/
+/*  position: absolute;*/
+/*  bottom: 0;*/
+/*  left: 0;*/
+/*  width: 0;*/
+/*  height: 0;*/
+/*  border: 5px solid white;*/
+/*  border-right-color: transparent;*/
+/*  border-top-color: transparent;*/
+/*  box-shadow: 5px 10px;}*/
 
 #componentChat .msg_sent > time{
   float: right;

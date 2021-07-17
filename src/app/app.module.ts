@@ -43,6 +43,9 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { FillDoctorNearMeComponent } from './fill-doctor-near-me/fill-doctor-near-me.component';
 import { FillNannyNearMeComponent } from './fill-nanny-near-me/fill-nanny-near-me.component';
+import { RegisterComponent } from './user/register/register.component';
+import {ChatService} from "./Services/chatService";
+import { GooglemapComponent } from './googlemap/googlemap.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +77,9 @@ import { FillNannyNearMeComponent } from './fill-nanny-near-me/fill-nanny-near-m
     DoctorBookingComponent,
     CallvideoComponent,
     FillDoctorNearMeComponent,
-    FillNannyNearMeComponent
+    FillNannyNearMeComponent,
+    RegisterComponent,
+    GooglemapComponent
 
   ],
   imports: [
@@ -89,7 +94,7 @@ import { FillNannyNearMeComponent } from './fill-nanny-near-me/fill-nanny-near-m
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
-  providers: [NotificationService],
+  providers: [NotificationService,ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

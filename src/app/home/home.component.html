@@ -32,14 +32,14 @@
 
           </div>
           <div class="col col-4 mt-2 text-right">
-          <div class="form-group">
-            <input type="file" #uploadFile (change)="uploadFileImg()" class="form-control">
-          </div>
+            <div class="form-group">
+              <input type="file" #uploadFile (change)="uploadFileImg()" class="form-control">
+            </div>
 
-        </div>
+          </div>
           <div style="margin-left: 300px" *ngIf="arrayPicture!= ''">
             <div class="form-group">
-              <img src="{{arrayPicture}}"  width="550" height="300">
+              <img src="{{arrayPicture}}" width="550" height="300">
             </div>
           </div>
           <div class="col col-8 mt-2 text-center">
@@ -74,7 +74,9 @@
                     >{{post.user.username}}<span
                       class="caret"></span></a>
                       <ul class="dropdown-menu">
-                        <li><a href="#">Chat</a></li>
+                        <li><a href="javascript:void(0)"
+                               (click)="chatSerice.createRomChat(userToken.username,post.user.username,post.user)">Chat</a>
+                        </li>
                         <li><a href="#">Profile</a></li>
 
                       </ul>
@@ -219,110 +221,56 @@
     <!--      phần chat-->
     <!--      phần chat-->
     <!--      phần chat-->
-    <div id="componentChat"style="margin-left:980px;">
-      <div class="row chat-window" id="chat_window_1" >
+    <div id="componentChat" style="margin-left:950px;">
+      <div class="row chat-window" id="chat_window_1" style="width: 300px">
         <!--        <div class="col-xs-12 col-md-12">-->
         <div class="panel panel-default">
-          <div class="panel-heading top-bar">
+          <div class="panel-heading top-bar" style="width: 300px;border-radius: 5px">
 
-            <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> Chat - Miguel</h3>
 
-            <button (click)="showandHideMess()">Ẩn/Hiện</button>
+            Chat -
+            <button class="btn btn-success btn-sm" (click)="showandHideMess()">Ẩn/Hiện</button>
 
           </div>
           <div id="bodyMess">
             <div class="panel-body msg_container_base">
-              <div class="row msg_container base_sent">
-                <div class="col-md-10 col-xs-10">
-                  <div class="messages msg_sent">
-                    <p>that mongodb thing looks good, huh?
-                      tiny master db, and huge document store</p>
-                    <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+              <div *ngFor="let mess of chatSerice.listMessenger">
+                <div class="row msg_container" *ngIf="mess.appUser.username == userToken.username">
+                  <div class="col-md-10 col-xs-10">
+                    <div class="messages msg_sent">
+                      <p>{{mess.messenger}}</p>
+                      <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+                    </div>
+                  </div>
+                  <div class="col-md-2 col-xs-2 avatar">
+                    <img
+                      src="{{userToken.avatar}}"
+                      class="rounded-circle">
                   </div>
                 </div>
-                <div class="col-md-2 col-xs-2 avatar">
-                  <img
-                    src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg"
-                    class=" img-responsive ">
-                </div>
-              </div>
-              <div class="row msg_container base_receive">
-                <div class="col-md-2 col-xs-2 avatar">
-                  <img
-                    src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg"
-                    class=" img-responsive ">
-                </div>
-                <div class="col-md-10 col-xs-10">
-                  <div class="messages msg_receive">
-                    <p>that mongodb thing looks good, huh?
-                      tiny master db, and huge document store</p>
-                    <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+                <div class="row msg_container " *ngIf="mess.appUser.username != userToken.username">
+                  <div class="col-md-2 col-xs-2 avatar">
+                    <img
+                      src="{{chatSerice.userFriend.imageUrls}}"
+                      class=" img-responsive ">
                   </div>
-                </div>
-              </div>
-              <div class="row msg_container base_receive">
-                <div class="col-md-2 col-xs-2 avatar">
-                  <img
-                    src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg"
-                    class=" img-responsive ">
-                </div>
-                <div class="col-xs-10 col-md-10">
-                  <div class="messages msg_receive">
-                    <p>that mongodb thing looks good, huh?
-                      tiny master db, and huge document store</p>
-                    <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+                  <div class="col-md-10 col-xs-10">
+                    <div class="messages msg_receive">
+                      <p>{{mess.messenger}}</p>
+                      <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="row msg_container base_sent">
-                <div class="col-xs-10 col-md-10">
-                  <div class="messages msg_sent">
-                    <p>that mongodb thing looks good, huh?
-                      tiny master db, and huge document store</p>
-                    <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-                  </div>
-                </div>
-                <div class="col-md-2 col-xs-2 avatar">
-                  <img
-                    src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg"
-                    class=" img-responsive ">
-                </div>
-              </div>
-              <div class="row msg_container base_receive">
-                <div class="col-md-2 col-xs-2 avatar">
-                  <img
-                    src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg"
-                    class=" img-responsive ">
-                </div>
-                <div class="col-xs-10 col-md-10">
-                  <div class="messages msg_receive">
-                    <p>that mongodb thing looks good, huh?
-                      tiny master db, and huge document store</p>
-                    <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-                  </div>
-                </div>
-              </div>
-              <div class="row msg_container base_sent">
-                <div class="col-md-10 col-xs-10 ">
-                  <div class="messages msg_sent">
-                    <p>that mongodb thing looks good, huh?
-                      tiny master db, and huge document store</p>
-                    <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-                  </div>
-                </div>
-                <div class="col-md-2 col-xs-2 avatar">
-                  <img
-                    src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg"
-                    class=" img-responsive ">
-                </div>
-              </div>
+
             </div>
             <div class="panel-footer">
               <div class="input-group">
                 <input id="btn-input" type="text" class="form-control input-sm chat_input"
-                       placeholder="Write your message here..."/>
+                       placeholder="Write your message here..." [(ngModel)]="chatSerice.message"/>
                 <span class="input-group-btn">
-                        <button class="btn btn-primary btn-sm" id="btn-chat">Send</button>
+                        <button class="btn btn-primary btn-sm" id="btn-chat"
+                                (click)="chatSerice.sendName()">Send</button>
                         </span>
               </div>
             </div>
