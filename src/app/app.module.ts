@@ -45,7 +45,6 @@ import { FillDoctorNearMeComponent } from './fill-doctor-near-me/fill-doctor-nea
 import { FillNannyNearMeComponent } from './fill-nanny-near-me/fill-nanny-near-me.component';
 import { RegisterComponent } from './user/register/register.component';
 import {ChatService} from "./Services/chatService";
-import { GooglemapComponent } from './googlemap/googlemap.component';
 
 @NgModule({
   declarations: [
@@ -78,8 +77,7 @@ import { GooglemapComponent } from './googlemap/googlemap.component';
     CallvideoComponent,
     FillDoctorNearMeComponent,
     FillNannyNearMeComponent,
-    RegisterComponent,
-    GooglemapComponent
+    RegisterComponent
 
   ],
   imports: [
